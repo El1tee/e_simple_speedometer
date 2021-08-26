@@ -10,6 +10,7 @@ CreateThread(function()
                 Draw2DText(0.56, 0.98, 0.4,0.4, "Gas: "..tostring(math.ceil(GetVehicleFuelLevel(vehicle))).."%", 255, 255, 255, 255)
             end
         end
+        Wait(sleep)
     end
 end)
 
