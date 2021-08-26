@@ -1,15 +1,14 @@
-Citizen.CreateThread( function()
+CreateThread(function()
     while true do 
-        Citizen.Wait(5)
+        local sleep = 1000
         local ped = GetPlayerPed(-1)
         if(IsPedInAnyVehicle(ped)) then
-	        local vehicle = GetVehiclePedIsIn(ped, false)
+	    local vehicle = GetVehiclePedIsIn(ped, false)
             if GetPedInVehicleSeat(vehicle, -1) == ped then
-                Draw2DText(0.68, 0.98, 0.4,0.4, "" .. math.floor(GetEntitySpeed(GetPlayerPed(-1)) * 3.6) .. " km/h", 255, 255, 255, 255)
-                Draw2DText(0.56, 0.98, 0.4,0.4, "Gas: " .. tostring(math.ceil(GetVehicleFuelLevel(vehicle))) .. "%", 255, 255, 255, 255)
+                sleep = 5
+                Draw2DText(0.68, 0.98, 0.4,0.4, tostring(math.ceil(GetEntitySpeed(GetPlayerPed(-1))) * 3.6).." km/h", 255, 255, 255, 255)
+                Draw2DText(0.56, 0.98, 0.4,0.4, "Gas: "..tostring(math.ceil(GetVehicleFuelLevel(vehicle))).."%", 255, 255, 255, 255)
             end
-        else
-            Wait(1000)
         end
     end
 end)
